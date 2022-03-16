@@ -8,8 +8,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
   <style>
-    .content {
-      overflow: auto;
+  body:not(.ready) {
+    overflow: auto;
+    }
+    /* .sidebar, body {
+      background-color: #303030;
+    } */
+    .lang-og > .token.keyword {
+      color: #00a7e9;
+      /* color: hsl(12, 80%, 42%); */
     }
     </style>
 </head>
@@ -17,12 +24,13 @@
   <div id="app"></div>
   <script>
     window.$docsify = {
+      coverpage: true,
       name: 'AI4H Documentation',
       repo: 'https://github.com/FG-AI4H/health-aiaudit-platform',
       loadSidebar: true,
       subMaxLevel: 2,
-      search: "auto",
       auto2top: true,
+      themeColor: '#13d4b0',
       alias: {
         '/.*/_sidebar.md': '/_sidebar.md'
       },
