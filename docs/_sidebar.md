@@ -2,7 +2,7 @@
 
 * [Types of Benchmarks](_types.md)
 
-* [Host Benchmarks](_benchmarks.md)
+* [Host Benchmarks](_host.md)
 
 * [Participate in Benchmarks](_participate.md)
 
