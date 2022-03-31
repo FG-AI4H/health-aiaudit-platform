@@ -1,7 +1,7 @@
 # Hosting Benchmarks
 In addition to this documentation, our onboarding team is continually creating [training resources](https://drive.google.com/drive/folders/1VtZqqDt5YbtC9ODFdTVsJV9It3_8LKH2) that help new benchmarks host to understand the process better.
 
-In general the process of uploading a benachmark to our platform consists of configuring and uploading [this starter package](https://github.com/FG-AI4H/health-aiaudit-benchmark-starters) to our platform. The repository also contains a demo configuration in the folder **retino-public-example**.
+In general the process of uploading a benchmark to our platform consists of configuring and uploading [this starter package](https://github.com/FG-AI4H/health-aiaudit-benchmark-starters) to our platform. The repository also contains a demo configuration in the folder **retino-public-example**.
 >[!ATTENTION]
  >Please note that after configuration you need to delete the demo folder. Otherwise it can cause errors when initializing the challenge on the platform.
 
@@ -44,7 +44,7 @@ In general the process of uploading a benachmark to our platform consists of con
 ```
 
 ## Challenge Configuration
-The first step when creating a new benchmark is to configure the **challenge_config.yaml** file. It contains all the necessary settings for your benchmark from title, start date to all the dataset splits. For an extensive overview of all fields and settings please view the EvalAI documentation [here](https://evalai.readthedocs.io/en/latest/configuration.html).
+The first step when creating a new benchmark is to configure the **challenge_config.yaml** file. It contains all the necessary settings for your benchmark from the title, start date to all the dataset splits. For an extensive overview of all fields and settings please view the EvalAI documentation [here](https://evalai.readthedocs.io/en/latest/configuration.html).
 
 >[!ATTENTION]
  >We have extended the challenge_config.yaml with additional fields that are not included in the official documentation. Please view the section QUESTIONNAIRE for more details.
@@ -61,7 +61,7 @@ Only the folders annotations, evaluation_script and templates are relevant for t
 6. Upload the ZIP [here](https://health.aiaudit.org/web/challenge-create).
 
 ## Docker-Based Evaluation
-In the docker-based evaluation all files except remote_challenge_evaluation are necessary to be configured. Before you can begin with the configuration you need to know how your worker container will communicate with the participants submission container. All communication is defined in the **code_upload_challenge_evaluation** folder. This is not trivial and we will soon update the documentation with an extensive explanation on how to do this.
+In the Docker-based evaluation, all files except remote_challenge_evaluation are necessary to be configured. Before you can begin with the configuration you need to know how your worker container will communicate with the participant's submission container. All communication is defined in the **code_upload_challenge_evaluation** folder. This is not trivial and we will soon update the documentation with an extensive explanation of how to do this.
 
 The following steps are necessary to host a docker-based evaluation:
 1. Configure the challenge_config.yml. Set the flags **remote_evaluation** to FALSE. Set  **is_docker_based** and **is_static_dataset_docker_based_challenge** to TRUE.
@@ -75,8 +75,9 @@ The following steps are necessary to host a docker-based evaluation:
 ## Evaluation Script
 The evaluation script is the core component of the benchmark, wherein the model is evaluated against a variety of metrics. The evaluation script is fully customizable and up to the host to define. While this makes the process very flexible, it comes with the challenge of setting up quite a lot by yourself.
 
-The metrics relevant for the evaluation shoudl be defined in the previous step under
+The metrics relevant for the evaluation should be defined in the previous step under
  [challenge configuration](_host?id=challenge-configuration). This is necessary so that the results can be displayed properly on the leaderboard. If you chose to have multiple phases of the evaluation, such as test and development, you need to define different evaluation scripts for each.
+
 ```json
 leaderboard:
   - id: 1
@@ -98,7 +99,7 @@ leaderboard:
 ```
 Generally, the main function of the evaluation script is the evaluate() function, used by workers to evaluate the submission message.
 
-The function evaluate() receives both the test_annotations, previously uploaded in the configuration file, and the user_submission through the platform, as well as the phase_codename.
+The function evaluate() receives both the test_annotations, previously uploaded in the configuration file and the user_submission through the platform, as well as the phase_codename.
 
 ```python
 def evaluate(test_annotation_file, user_annotation_file, phase_codename, **kwargs):
@@ -147,7 +148,7 @@ def evaluate(test_annotation_file, user_submission_file, phase_codename, **kwarg
         ...
     return output
 ```
-The output should contain a key named result, which is a list containing entries per dataset split that is available for the challenge phase in consideration (in the function definition of evaluate() shown above, the argument: phase_codename will receive the codename for the challenge phase against which the submission was made).
+The output should contain a key named result, which is a list containing entries per dataset split that are available for the challenge phase in consideration (in the function definition of evaluate() shown above, the argument: phase_codename will receive the codename for the challenge phase against which the submission was made).
 
 ## Questionnaire Config
 In addition to the quantitative evaluation based on metrics, our goal is to provide qualitative assessment in form of a questionnaire. This questionnaire consists of 70 questions that also need to be configured in the **challenge_config.yaml** file.
