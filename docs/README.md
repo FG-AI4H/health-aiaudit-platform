@@ -15,7 +15,7 @@ You can view our running platform [here](https://health.aiaudit.org/).
 
 ## Team <!-- {docsify-ignore} -->
 
-- Project Lead: Elora Schoerverth, Luis Oala, Markus Wenzel
+- Project Lead: Elora Schörverth, Luis Oala, Markus Wenzel
 - Project Management: Pradeep Balachandran, Alixandro Werneck
 - Development Lead: Abdullah Saboor
 - Frontend Developer: Roen Thanasaj
@@ -26,4 +26,4 @@ You can view our running platform [here](https://health.aiaudit.org/).
 For any questions about the platform and the codebase, please contact elora.schoerverth@hhi.fraunhofer.de.
 
 ### Credit <!-- {docsify-ignore} -->
-We want to thank the [EvalAI](https://github.com/Cloud-CV/EvalAI)  team from CloudCV for providing their open-source code. In this documentation we will refer in part to their [documentation](https://evalai.readthedocs.io/en/latest/).
+We want to thank the [EvalAI](https://github.com/Cloud-CV/EvalAI)  team from CloudCV for providing their open-source code. In this documentation, we will refer in part to their [documentation](https://evalai.readthedocs.io/en/latest/).
