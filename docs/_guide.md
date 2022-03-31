@@ -133,7 +133,7 @@ You should merge staging into master, but **keep** the staging branch after the 
    >Throughout the entire project the aws-region needs to be set to eu-central-1. EvalAI's source code uses us-east-1 but this will cause errors
 
 4. **Pull changes**:
-After step 3 the changes are now merged into the master branch on GitHub, but not actually changed on the production instance. So you need to go to production and pull the changes from the remote repository doing:
+After step 3 the changes are now merged into the master branch on GitHub, but not changed on the production instance. So you need to go to production and pull the changes from the remote repository doing:
 ```bash
 git pull origin master
 ```
@@ -146,7 +146,7 @@ sudo docker-compose -f docker-compose-TYPE.yml build
 ### Extend Database Model
 Since our platform is Django-based it is always advised to consult Django's well written and extensive [documentation](https://docs.djangoproject.com/en/4.0/).
 
-Extending the database model is mostly needed if you want to add new fields of attributes to data classes. In Django, the structure and changes of the database models are tracked in so-called *migrations* which need to be updated every time you perform changes. The migrations files are stored in the migrations folder of each Django app, which means you can always revert back to older versions. It's important to mention that our migration files differ from EvalAIs since we have integrated new features such as the questionnaire. As a result, it is very important to never override our migration files when you pull updates from EvalAI.
+Extending the database model is mostly needed if you want to add new fields of attributes to data classes. In Django, the structure and changes of the database models are tracked in so-called *migrations* which need to be updated every time you perform changes. The migrations files are stored in the migrations folder of each Django app, which means you can always revert to older versions. It's important to mention that our migration files differ from EvalAIs since we have integrated new features such as the questionnaire. As a result, it is very important to never override our migration files when you pull updates from EvalAI.
 
 In general the following steps are necessary to extend the DB model:
 
@@ -232,7 +232,7 @@ Currently, the project runs with the AWS access keys of the user *steffen*. When
 6. Once the project runs safely with the new access keys, deactivate the old pair on AWS IAM.
 
 ## 4. Debug Help
-The first thing to **always** do when something seems to be broken is to check the CloudWatch error logs. They are separated by staging/production and by services, i.e. backend, frontend, worker. They will indicate what went wrong. Be aware that while the errors are usually straightforward, they are often caused by other components, so simply heading to StackOverflow rarely works. A very common issue is that some configurations such as queue name, aws region, or deployment type got overwritten and need to be changed back. For this reason, it's helpful to keep track of recent changes by regularly making commits to our GitHub repository.
+The first thing to **always** do when something seems to be broken is to check the CloudWatch error logs. They are separated by staging/production and by services, i.e. backend, frontend, worker. They will indicate what went wrong. Be aware that while the errors are usually straightforward, they are often caused by other components, so simply heading to StackOverflow rarely works. A very common issue is that some configurations such as queue name, AWS region, or deployment type got overwritten and need to be changed back. For this reason, it's helpful to keep track of recent changes by regularly making commits to our GitHub repository.
 
 <!-- ### Django Migrations Error
 ### Issues Migrating to Production -->
